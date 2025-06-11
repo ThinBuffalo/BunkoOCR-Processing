@@ -1,3 +1,3 @@
 // import request from "./request.js";
-const a = require("./request.js");
-console.log(a.request());
+const get = require("./request.js");
+console.log(get.request());
