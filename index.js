@@ -27,7 +27,7 @@ async function main() {
                 console.log(`成功处理${file}的OCR数据`);
 
                 fs.appendFileSync(OUTPUT_FILE,
-                    `${processedText}\n\n`,
+                    `${processedText}\n`,
                     'utf8'
                 );
                 console.log(`${file}的OCR数据已写入`);
