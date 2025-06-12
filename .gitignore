@@ -1,2 +1,4 @@
 node_modules/
-image1.jpg
+image/
+output.txt
+test.js
