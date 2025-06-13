@@ -23,8 +23,6 @@ function getWidthRange(ocrResults) {
     const widths = ocrResults.words_result.map(item => item.location.width).sort((a, b) => a - b);
     const mid = Math.floor((widths.length / 2)) + 1; // 取中值
     // 将数据分为前半和后半，分别处理
-    // const firstHalf = widths.filter(w => w < widths[mid]);
-    // let secondHalf = widths.filter(w => w >= mid);
     let firstHalf = [], secondHalf = [];
     for (let i = 0; i < mid; i++)   firstHalf.push(widths[i]);
     for (let i = mid; i <= widths.length-1; i++)   secondHalf.push(widths[i]);
