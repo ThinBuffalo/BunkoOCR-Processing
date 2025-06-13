@@ -1,6 +1,8 @@
 # 基于百度OCR的日语文库本扫描实例
 [启智协作平台](https://git.openi.org.cn/Thin_Buffalo/OCR-Processing) | [GitHub](https://github.com/ThinBuffalo/BunkoOCR-Prossing)
 
+*感谢 ruinform 对本解决方案思路的启发和支持*
+
 ## 应用场景
 将日语文库本自摄照片或扫描图片为原件，用于生成文库本电子文档，以用于机器翻译等场景。
 
@@ -10,7 +12,7 @@
 - *《败犬女主太多了！ 9》* 贴吧组翻译（预定）
 
 ## 平台支持
-- [百度AI开放平台]("https://ai.baidu.com/ai-doc/OCR/dk3iqnq51")
+- [百度AI开放平台](https://ai.baidu.com/ai-doc/OCR/dk3iqnq51)
 
 - Node.js语言
 
