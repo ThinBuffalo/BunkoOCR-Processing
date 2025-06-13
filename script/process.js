@@ -1,4 +1,3 @@
-let widthRange = null;  // 宽度判定范围
 module.exports = (ocrData) => {
   // 参数验证
   if (!ocrData?.words_result) throw new Error('Invalid OCR data');
@@ -19,11 +18,34 @@ module.exports = (ocrData) => {
 };
 
 // 根据宽度离散确定正文对应宽度
-function getWidthRange(Data) {
-    if(!widthRange) {
-        console.log('未检测到给定的宽度判定范围，开始测算范围');
-        widthRange = [37, 75];
-        console.log(`确定宽度判定范围为：${widthRange[0]}—${widthRange[1]}`);
+function getWidthRange(ocrResults) {
+    // 提取宽度数据并排序
+    const widths = ocrResults.words_result.map(item => item.location.width).sort((a, b) => a - b);
+    const mid = Math.floor((widths.length / 2)) + 1; // 取中值
+    // 将数据分为前半和后半，分别处理
+    // const firstHalf = widths.filter(w => w < widths[mid]);
+    // let secondHalf = widths.filter(w => w >= mid);
+    let firstHalf = [], secondHalf = [];
+    for (let i = 0; i < mid; i++)   firstHalf.push(widths[i]);
+    for (let i = mid; i <= widths.length-1; i++)   secondHalf.push(widths[i]);
+    // 在前半部分寻找阈值点
+    let maxGap = 0;     // 最大间距
+    let threshold = 0;  // 阈值
+    for (let i = 0; i < mid; i++) {
+        const gap = firstHalf[i+1] - firstHalf[i];
+        if (gap > maxGap) {
+            maxGap = gap;
+            threshold = firstHalf[i+1];
+        }
     }
-    return widthRange;
+    // 检验后半部分是否有异常突变点
+    let boundary = widths[widths.length-1];
+    for (let i = secondHalf.length-1; i >= 0; i--) {
+        const gap = secondHalf[i] - secondHalf[i-1];
+        if ((gap * 2) >= secondHalf[i-1]) {
+            boundary = secondHalf[i-1];
+        }
+    }
+    console.log(`确定宽度判定范围为：${threshold}—${boundary}`);
+    return [threshold, boundary];
 }
