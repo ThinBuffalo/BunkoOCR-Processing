@@ -1,5 +1,5 @@
 # 基于百度OCR的日语文库本扫描实例
-[启智协作平台](https://git.openi.org.cn/Thin_Buffalo/OCR-Processing) | [Github](https://github.com/ThinBuffalo/BunkoOCR-Prossing)
+[启智协作平台](https://git.openi.org.cn/Thin_Buffalo/OCR-Processing) | [GitHub](https://github.com/ThinBuffalo/BunkoOCR-Prossing)
 
 ## 应用场景
 将日语文库本自摄照片或扫描图片为原件，用于生成文库本电子文档，以用于机器翻译等场景。
@@ -18,18 +18,18 @@
 1. 遍历并读取项目根目录`image`文件夹下的照片，分别对每张照片进行处理。（`index.js`）
 
 2. 利用百度AI开放平台的 **通用文字识别（高精度含位置版）** API对图片进行OCR处理（`/script/request.js`）。
-> **建议在OCR前先对拍照件使用扫描服务进行处理。**
+    > **建议在OCR前先对拍照件使用扫描服务进行处理。**
 
-> **已经实现`API Key`和`Secret Key`的封装读取。**
-> 
-> 在根目录下创建`token.json`：
->
-> ```json
->   {
->       "AK": "[填写API Key（`client_id`）]"
->       "SK": "[填写Secret Key（`client_secret`）]"
->   }
-> ```
+    > **已经实现`API Key`和`Secret Key`的封装读取。**
+    > 
+    > 在根目录下创建`token.json`：
+    >
+    > ```json
+    >   {
+    >       "AK": "[填写API Key（`client_id`）]"
+    >       "SK": "[填写Secret Key（`client_secret`）]"
+    >   }
+    > ```
 
 3. 对OCR的结果进行处理，大致清除其中的非正文元素。（`/script/process.js`）
 
