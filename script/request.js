@@ -1,9 +1,17 @@
 const axios = require('axios');
 const fs = require('fs');
 
-// 替换为您的实际AK/SK
-const AK = "3mBqWevEsak7yjA0gcTSS04m";
-const SK = "ycnLgXIks2FOjnpWgCDflzHIlchnNrPD";
+// AK/SK的封装处理
+/*
+    在项目根目录的`token.json`内：
+    {
+        "AK": "[填写API Key（`client_id`）]"
+        "SK": "[填写Secret Key（`client_secret`）]"
+    }
+*/
+const token = require('../token.json');
+const AK = token.AK;
+const SK = token.SK;
 
 module.exports = async (imagePath) => {
     // 获取访问令牌
